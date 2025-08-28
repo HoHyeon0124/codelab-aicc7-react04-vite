@@ -8,29 +8,26 @@ const initialState = {
     isLogging: false,
     isLogOn: false,
     data: {},
+    error: null,
   },
 }
 
-const fetchUser = createAsyncThunk("glb/fetchUser", async (userId) => {
+const fetchUser = createAsyncThunk("auth/fetchUser", async (userId) => {
   const url = "https://jsonplaceholder.typicode.com/users/"
   const response = await axios(url + userId)
   return response
 })
 
-const glbSlice = createSlice({
-  name: "glb",
+const authSlice = createSlice({
+  name: "auth",
   initialState,
   reducers: {
-    // sync
-    setGreeting: (state, action) => {
-      state.greeting = action.payload
-    },
-    toggleTheme: (state) => {
-      state.theme = state.theme === "light" ? "dark" : "light"
-    },
-    setTheme: (state, action) => {
-      state.theme = action.payload
-    },
+    logOut: (state) => {
+    state.isLogging: false
+    state.isLogOn: false
+    state.data: {}
+    state.error: null
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -39,18 +36,21 @@ const glbSlice = createSlice({
       })
       .addCase(fetchUser.fullfilled, (state, action) => {
         state.user.isLogging = false
-        state.user.data = action.payload.data
+        state.user.isLogOn = true
+        state.user.data = action.payload.data || {}
+        state.user.error = null
       })
-      .addCase(fetchUser.reject, (state) => {
+      .addCase(fetchUser.rejected, (state, action) => {
         state.user.isLogging = false
-        state.user.data = {}
         state.user.isLogOn = false
+        state.user.data = {}
+        state.user.error = action.payload.data || null
       })
   },
 })
 
-export default glbSlice.reducer
-export { fetchUser }
+export default authSlice.reducer
+export const { logOut } = authSlice.action
 
 // export default React
 // export { useState, useCallback }
