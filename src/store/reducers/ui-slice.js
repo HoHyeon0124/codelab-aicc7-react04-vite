@@ -6,10 +6,9 @@ const initialState = {
 }
 
 const uiSlice = createSlice({
-  name: "Ui",
+  name: "ui",
   initialState,
   reducers: {
-    // sync
     setGreeting: (state, action) => {
       state.greeting = action.payload
     },
@@ -22,10 +21,5 @@ const uiSlice = createSlice({
   },
 })
 
-export default uiSlice.reducer
 export const { setGreeting, setTheme, toggleTheme } = uiSlice.actions
-
-// export default React
-// export { useState, useCallback }
-// import glbReducer from "glb-slice"
-// import { fetchUser } from "glb-slice"
+export default uiSlice.reducer

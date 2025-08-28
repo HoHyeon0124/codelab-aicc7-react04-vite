@@ -2,17 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 
 const initialState = {
-  greeting: "",
-  theme: "light",
-  user: {
-    isLogging: false,
-    isLogOn: false,
-    data: {},
-    error: null,
-  },
+  isLogging: false,
+  isLogOn: false,
+  data: {},
+  error: null,
 }
 
-const fetchUser = createAsyncThunk("auth/fetchUser", async (userId) => {
+export const fetchUser = createAsyncThunk("auth/fetchUser", async (userId) => {
   const url = "https://jsonplaceholder.typicode.com/users/"
   const response = await axios(url + userId)
   return response
@@ -23,18 +19,18 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logOut: (state) => {
-    state.isLogging: false
-    state.isLogOn: false
-    state.data: {}
-    state.error: null
-    }
+      state.isLogging = false
+      state.isLogOn = false
+      state.data = {}
+      state.error = null
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchUser.pending, (state) => {
         state.user.isLogging = true
       })
-      .addCase(fetchUser.fullfilled, (state, action) => {
+      .addCase(fetchUser.fulfilled, (state, action) => {
         state.user.isLogging = false
         state.user.isLogOn = true
         state.user.data = action.payload.data || {}
@@ -44,13 +40,13 @@ const authSlice = createSlice({
         state.user.isLogging = false
         state.user.isLogOn = false
         state.user.data = {}
-        state.user.error = action.payload.data || null
+        state.user.error = action.payload.error.data || null
       })
   },
 })
 
 export default authSlice.reducer
-export const { logOut } = authSlice.action
+export const { logOut } = authSlice.actions
 
 // export default React
 // export { useState, useCallback }
