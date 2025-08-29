@@ -24,3 +24,5 @@ export const googleProvider = new GoogleAuthProvider()
 export { signInWithPopup, signOut }
 
 const analytics = getAnalytics(app)
+
+export { app, auth, googleProvider, signInWithPopup, signOut }
