@@ -20,10 +20,11 @@ export default function HeaderWrapper() {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
+        marginBottom: "1em",
       }}
     >
       <Typography variant="h4" component={Link} to="/">
-        sdnsp0124
+        Booldook
       </Typography>
       <Breadcrumbs>
         <Typography component={Link} to="/shop">
