@@ -33,7 +33,10 @@ api.interceptors.response.use(
   },
   (error) => {
     if (error.response?.status === 503) {
-      // TODO :: 리플래시 코튼 요청 코드
+      // TODO :: 리플래시 토큰 요청 코드
+    }
+    if (error.response?.status === 500) {
+      // 공통 에러 처리
     }
     error.MY_RESPONSE = "..."
     return Promise.reject(error)
