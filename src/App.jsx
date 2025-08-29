@@ -10,6 +10,7 @@ import { store, persistor } from "./store"
 import TestProvider from "./providers/TestProviders"
 import Containers from "./Containers"
 import { swrValue } from "./swr"
+import FirebaseProvider from "./providers/FirebaseProvider"
 
 import "@/assets/styles/app.scss"
 
@@ -18,11 +19,13 @@ function App() {
     <StoreProvider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <SWRConfig value={swrValue}>
-          <BrowserRouter>
-            <TestProvider>
-              <Containers />
-            </TestProvider>
-          </BrowserRouter>
+          <FirebaseProvider>
+            <BrowserRouter>
+              <TestProvider>
+                <Containers />
+              </TestProvider>
+            </BrowserRouter>
+          </FirebaseProvider>
         </SWRConfig>
       </PersistGate>
     </StoreProvider>
