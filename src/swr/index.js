@@ -33,7 +33,7 @@ use: 미들웨어 함수의 배열 (상세내용)
 import { api } from "@/modules/api"
 
 export const typiFetcher = (url) => {
-  const baseURL = "import.meta.env.VITE_BOARD_API"
+  const baseURL = import.meta.env.VITE_BOARD_API
   return api.get(baseURL + url).then((response) => response.data)
 }
 // 예시

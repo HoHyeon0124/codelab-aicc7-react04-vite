@@ -17,6 +17,8 @@ export default function BoardList() {
 
   const { data, error, isLoading } = useSWR("/posts")
 
+  console.log(data)
+
   useEffect(() => {
     console.log(test)
   }, [test])
