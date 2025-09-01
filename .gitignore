@@ -27,3 +27,10 @@ dist-ssr
 .env
 .env.development
 .env.production
+
+firebase.json
+.firebaserc
+database.rules.json
+firestore.indexes.json
+firestore.rules
+.firebase/hosting.ZGlzdA.cache
