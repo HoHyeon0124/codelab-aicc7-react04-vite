@@ -42,7 +42,7 @@ export const typiFetcher = (url) => {
 }
 // 예시
 export const firebaseGetFetcher = (url) => {
-  const baseURL = "https://api.firenbase.com"
+  const baseURL = "https://api.firebase.com"
   api.get(baseURL + url).then((response) => response.data)
 }
 
