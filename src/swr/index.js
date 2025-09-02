@@ -29,7 +29,6 @@ compare(a, b): 비논리적인 리렌더러를 회피하기 위해 반환된 데
 isPaused(): 갱신의 중지 여부를 감지하는 함수. true가 반환될 경우 가져온 데이터와 에러는 무시합니다. 기본적으로는 false를 반환합니다.
 use: 미들웨어 함수의 배열 (상세내용)
  */
-
 import { api } from "@/modules/api"
 
 export const expressFetcher = (url) => {
@@ -43,7 +42,7 @@ export const typiFetcher = (url) => {
 }
 // 예시
 export const firebaseGetFetcher = (url) => {
-  const baseURL = "https://api.typicode.com"
+  const baseURL = "https://api.firenbase.com"
   api.get(baseURL + url).then((response) => response.data)
 }
 
