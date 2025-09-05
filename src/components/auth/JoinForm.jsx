@@ -1,4 +1,4 @@
-import { useState, useActionState } from "react"
+import { useState, useActionState, useEffect } from "react"
 import Button from "@mui/material/Button"
 import styled from "@emotion/styled"
 
@@ -31,8 +31,38 @@ const ButtonWrap = styled.div`
 `
 
 export default function JoinForm() {
-  const createUser = () => {}
-  const [formState, formAction] = useActionState(createUser, {})
+  // const [form, setForm] = useState({
+  //   usrNm: "",
+  //   usrId: "",
+  //   usrPw: "",
+  //   usrPwRe: "",
+  //   usrEmail: "",
+  // })
+  // ["usrNm"]: "aa"
+  // const onChangeForm = (e) =>
+  //   setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+
+  const createUser = async (prev, data) => {
+    const usrNm = data.get("usrNm")
+    const usrId = data.get("usrId")
+    const usrPw = data.get("usrPw")
+    const usrPwRe = data.get("usrPwRe")
+    const usrEmail = data.get("usrEmail")
+    // TODO :: Validation
+    // TODO :: axios
+    return {
+      usrNm,
+      usrId,
+      usrPw,
+      usrEmail,
+      error: null,
+    }
+  }
+  const [formState, formAction] = useActionState(createUser, null)
+
+  useEffect(() => {
+    console.log("Submitted data:", formState)
+  }, [formState])
 
   return (
     <div className="form-wrapper">
@@ -58,7 +88,9 @@ export default function JoinForm() {
           <Input type="text" name="usrEmail" />
         </FormList>
         <ButtonWrap>
-          <Button variant="contained">회원가입</Button>
+          <Button variant="contained" type="submit">
+            회원가입
+          </Button>
         </ButtonWrap>
       </FormWrap>
     </div>
