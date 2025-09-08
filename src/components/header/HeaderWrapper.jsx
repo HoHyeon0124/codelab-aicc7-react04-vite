@@ -64,7 +64,7 @@ export default function HeaderWrapper() {
   return (
     <HeaderRoot>
       <Typography variant="h4" component={Link} to="/">
-        sdnsp0124
+        Booldook
       </Typography>
       <Breadcrumbs>
         <Typography component={Link} to="/shop">
@@ -107,7 +107,7 @@ export default function HeaderWrapper() {
           <Button
             variant="outlined"
             sx={{ mr: 2 }}
-            onClick={() => dispatch(logOut())}
+            onClick={() => navigate("/login")}
           >
             로그인
           </Button>
