@@ -1,3 +1,16 @@
+VITE_API_KEY="AIzaSyDBvpClL0bybkXJgnAAagyJx2xeci9drdc"
+VITE_AUTH_DOMAIN="booldook-store.firebaseapp.com"
+VITE_PROJECT_ID="booldook-store"
+VITE_STORAGE_BUCKET="booldook-store.firebasestorage.app"
+VITE_MESSAGING_SENDER_ID="491904710503"
+VITE_APP_ID="1:491904710503:web:a8a22a1676fc38030b61c2"
+VITE_MEASUREMENT_ID="G-6PTPXBLYQR"
+VITE_RTDB_URL="https://booldook-store-default-rtdb.firebaseio.com"
+
+VITE_EXPRESS_API="http://localhost:3000"
+VITE_REFRESH_API="/public/refresh"
+VITE_TIMEOUT_API=10000
+
 ## 8월 29일 이전
 
 - React / useState, useEffect, webpack(+ mui, scss, typescript), vite,
@@ -37,4 +50,14 @@ console.log(set)
 const map = new Map()
 map.set("A", "AA")
 console.log(map.get("A"))
+```
+
+### Event처리
+
+```js
+window.addEventListener("onload", (e) => {})
+window.getElementById("#btn").addEventListener("onclick", (e) => {})
+
+window.customEvent(new CustomEvent("ERROR_500", { msg: "...", code: "" }))
+window.addEventListener("ERROR_500", (e) => {})
 ```
