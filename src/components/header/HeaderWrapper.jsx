@@ -57,21 +57,13 @@ export default function HeaderWrapper() {
   }
 
   useEffect(() => {
-    console.log("로그인상태: ", isLogOn)
+    // console.log("로그인상태: ", isLogOn)
   }, [isLogOn])
-
-  useEffect(() => {
-    const consol = () => {
-      console.log("HeaderWrapper")
-    }
-    consol()
-    return consol
-  }, [])
 
   return (
     <HeaderRoot>
       <Typography variant="h4" component={Link} to="/">
-        sdnsp0124
+        Booldook
       </Typography>
       <Breadcrumbs>
         <Typography component={Link} to="/shop">
